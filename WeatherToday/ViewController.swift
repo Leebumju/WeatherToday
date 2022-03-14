@@ -20,12 +20,24 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
+       
+        /*let img = UIImage(named: "flag_jp.png")
         
         let country: Country = self.countries[indexPath.row]
         cell.textLabel?.text = country.korean_name
-        //cell.detailTextLabel?.text = String(country.celsius)
-        return cell
+        cell.countryImg.image = img
+        //cell.detailTextLabel?.text = String(country.celsius)*/
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? Cell{
+            let country: Country = self.countries[indexPath.row]
+            let img = UIImage(named: "flag_\(country.asset_name).jpg")
+            cell.countryImg.image=img
+            cell.textLabel?.text = country.korean_name
+            //cell.bountyLabel.text="\(bountyList[indexPath.row])"
+            return cell
+        }else{
+            return UITableViewCell()
+        }
     }
         
     override func viewDidLoad() {
@@ -51,3 +63,6 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 }
 
+class Cell: UITableViewCell {
+    @IBOutlet weak var countryImg: UIImageView!
+}
