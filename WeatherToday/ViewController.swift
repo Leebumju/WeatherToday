@@ -7,35 +7,43 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var countryView: UITableView!
     
-    //@IBOutlet weak var cityWeatherView: UITableView!
+    
     let cellIdentifier: String = "cell"
-    //var city: [CityWeather] = []
+    
     var countries: [Country] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.countries.count
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSecondView" {
+            let vc = segue.destination as? SecondViewController
+            if let index = sender as? Int {
+                /*vc?.name = nameList[index]
+                vc?.bounty = bountyList[index]*/
+                //수정할 부분
+                //if foodName == "치킨" {
+                vc?.cityName = "fr"
+                //}
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        /*let img = UIImage(named: "flag_jp.png")
-        
-        let country: Country = self.countries[indexPath.row]
-        cell.textLabel?.text = country.korean_name
-        cell.countryImg.image = img
-        //cell.detailTextLabel?.text = String(country.celsius)*/
-        
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? Cell{
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? Cell {
+            
             let country: Country = self.countries[indexPath.row]
             let img = UIImage(named: "flag_\(country.asset_name).jpg")
-            cell.countryImg.image=img
+            cell.countryImg.image = img
             cell.textLabel?.text = country.korean_name
-            //cell.bountyLabel.text="\(bountyList[indexPath.row])"
+
             return cell
-        }else{
+        } else {
             return UITableViewCell()
         }
     }
@@ -59,7 +67,10 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         self.countryView.reloadData()
     }
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        print("-->\(indexPath.row)")
+        performSegue(withIdentifier: "showSecondView", sender: indexPath.row)
+    }
 
 }
 
