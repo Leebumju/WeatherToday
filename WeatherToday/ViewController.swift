@@ -8,22 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
+    @IBOutlet weak var countryView: UITableView!
     
-    @IBOutlet weak var cityWeatherView: UITableView!
+    //@IBOutlet weak var cityWeatherView: UITableView!
     let cellIdentifier: String = "cell"
-    var city: [CityWeather] = []
-    
+    //var city: [CityWeather] = []
+    var countries: [Country] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.city.count
+        return self.countries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath)
         
-        let cityWeather: CityWeather = self.city[indexPath.row]
-        cell.textLabel?.text = cityWeather.city_name
-        cell.detailTextLabel?.text = String(cityWeather.celsius)
+        let country: Country = self.countries[indexPath.row]
+        cell.textLabel?.text = country.korean_name
+        //cell.detailTextLabel?.text = String(country.celsius)
         return cell
     }
         
@@ -34,17 +35,17 @@ class ViewController: UIViewController, UITableViewDataSource {
         //json data asset이용하기
         //json Decoder 선언
         let jsonDecoder: JSONDecoder = JSONDecoder()
-        guard let dataAsset: NSDataAsset = NSDataAsset(name: "fr") else {
+        guard let dataAsset: NSDataAsset = NSDataAsset(name: "countries") else {
             return
         }
         
         do {
-            self.city = try jsonDecoder.decode([CityWeather].self, from: dataAsset.data)
+            self.countries = try jsonDecoder.decode([Country].self, from: dataAsset.data)
         } catch {
             print(error.localizedDescription)
         }
         
-        self.cityWeatherView.reloadData()
+        self.countryView.reloadData()
     }
 
 
