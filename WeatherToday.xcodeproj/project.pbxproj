@@ -15,7 +15,7 @@
 		D8254E3C27DE2BD800498529 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8254E3A27DE2BD800498529 /* LaunchScreen.storyboard */; };
 		D8254E4427DE2D9E00498529 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8254E4327DE2D9E00498529 /* CityModel.swift */; };
 		D8254E4627DF27F400498529 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8254E4527DF27F400498529 /* Country.swift */; };
-		D8254E4A27DF543C00498529 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8254E4927DF543C00498529 /* SecondViewController.swift */; };
+		D83F971827E4DC59007008A2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83F971727E4DC59007008A2 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		D8254E3D27DE2BD800498529 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8254E4327DE2D9E00498529 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		D8254E4527DF27F400498529 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		D8254E4927DF543C00498529 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D83F971727E4DC59007008A2 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = ../../../.Trash/SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 				D8254E4327DE2D9E00498529 /* CityModel.swift */,
 				D8254E4527DF27F400498529 /* Country.swift */,
 				D8254E3327DE2BD700498529 /* ViewController.swift */,
-				D8254E4927DF543C00498529 /* SecondViewController.swift */,
+				D83F971727E4DC59007008A2 /* SecondViewController.swift */,
 			);
 			path = WeatherToday;
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8254E4A27DF543C00498529 /* SecondViewController.swift in Sources */,
+				D83F971827E4DC59007008A2 /* SecondViewController.swift in Sources */,
 				D8254E4427DE2D9E00498529 /* CityModel.swift in Sources */,
 				D8254E3427DE2BD700498529 /* ViewController.swift in Sources */,
 				D8254E3027DE2BD700498529 /* AppDelegate.swift in Sources */,

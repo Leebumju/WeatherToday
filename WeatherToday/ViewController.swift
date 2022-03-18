@@ -20,28 +20,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSecondView" {
-            let vc = segue.destination as? SecondViewController
-            if let index = sender as? Int {
-                /*vc?.name = nameList[index]
-                vc?.bounty = bountyList[index]*/
-                //수정할 부분
-                //if foodName == "치킨" {
-                vc?.cityName = "fr"
-                //}
-            }
+        guard let nextViewController: SecondViewController =
+                segue.destination as? SecondViewController else {
+            return
         }
+        
+        guard let cell: UITableViewCell = sender as? UITableViewCell else {
+            return
+        }
+        
+        nextViewController.cityName = cell.textLabel?.text
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? Cell {
-            
             let country: Country = self.countries[indexPath.row]
             let img = UIImage(named: "flag_\(country.asset_name).jpg")
             cell.countryImg.image = img
             cell.textLabel?.text = country.korean_name
-
+            
             return cell
         } else {
             return UITableViewCell()
@@ -64,9 +62,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } catch {
             print(error.localizedDescription)
         }
-        
         self.countryView.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print("-->\(indexPath.row)")
         performSegue(withIdentifier: "showSecondView", sender: indexPath.row)
