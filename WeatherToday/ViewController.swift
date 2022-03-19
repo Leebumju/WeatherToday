@@ -14,7 +14,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let cellIdentifier: String = "cell"
     
     var countries: [Country] = []
-    
+   
+    //
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.countries.count
     }
@@ -30,6 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         nextViewController.cityName = cell.textLabel?.text
+       
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,7 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let country: Country = self.countries[indexPath.row]
             let img = UIImage(named: "flag_\(country.asset_name).jpg")
             cell.countryImg.image = img
-            cell.textLabel?.text = country.korean_name
+            cell.textLabel?.text = country.asset_name
             
             return cell
         } else {
@@ -74,4 +77,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 class Cell: UITableViewCell {
     @IBOutlet weak var countryImg: UIImageView!
+   // var assetName: String = ""
+    @IBOutlet weak var assetName: UILabel!
 }
