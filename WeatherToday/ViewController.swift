@@ -29,10 +29,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let cell: UITableViewCell = sender as? UITableViewCell else {
             return
         }
+        let selectedPath = countryView.indexPathForSelectedRow
         
-        nextViewController.cityName = cell.textLabel?.text
+        //두번째 뷰로 데이터 넘기기
+        nextViewController.cityName = countries[selectedPath!.row].korean_name
+        nextViewController.assetName = countries[selectedPath!.row].asset_name
        
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let country: Country = self.countries[indexPath.row]
             let img = UIImage(named: "flag_\(country.asset_name).jpg")
             cell.countryImg.image = img
-            cell.textLabel?.text = country.asset_name
+            cell.countryName.text = country.korean_name
             
             return cell
         } else {
@@ -77,6 +79,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 class Cell: UITableViewCell {
     @IBOutlet weak var countryImg: UIImageView!
-   // var assetName: String = ""
-    @IBOutlet weak var assetName: UILabel!
+    @IBOutlet weak var countryName: UILabel!
+    
 }

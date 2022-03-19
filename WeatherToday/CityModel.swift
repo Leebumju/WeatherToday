@@ -8,6 +8,7 @@
 import Foundation
 
 struct City: Codable{
+    
     let city_name: String
     let state: Int
     let celsius: Double
