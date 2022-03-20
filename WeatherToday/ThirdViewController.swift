@@ -8,7 +8,7 @@
 import UIKit
 
 class ThirdViewController: UIViewController {
-    var Fahrenheit: Double?
+    var fahrenheit: Double?
     var celsius: Double?
     var state: Int?
     var rainfall: Int?
@@ -18,7 +18,6 @@ class ThirdViewController: UIViewController {
     @IBOutlet weak var weatherImg: UIImageView!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var celsiusLabel: UILabel!
-    @IBOutlet weak var FahrenheitLabel: UILabel!
     @IBOutlet weak var rainfallLabel: UILabel!
     
     override func viewDidLoad() {
@@ -40,14 +39,11 @@ class ThirdViewController: UIViewController {
     
     func settingLabel() {
         var weatherName: String = ""
-        if let existCelsius = celsius {
-            celsiusLabel.text = String(existCelsius)
-        }
-        if let existFahrenheit = Fahrenheit {
-            FahrenheitLabel.text = String(existFahrenheit)
+        if let existCelsius = celsius, let existFahrenheit = fahrenheit {
+            celsiusLabel.text = "섭씨" + String(existCelsius) + "도 / " + "화씨" + String(existFahrenheit) + "도"
         }
         if let existRainfall = rainfall {
-            rainfallLabel.text = String(existRainfall) + "%"
+            rainfallLabel.text = "강수확률" + String(existRainfall) + "%"
         }
         
         if state == 10 {

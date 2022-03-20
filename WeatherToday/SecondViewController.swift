@@ -19,8 +19,9 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
-    ///
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let nextViewController: ThirdViewController =
                 segue.destination as? ThirdViewController else {
@@ -31,16 +32,16 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         let selectedPath = cityView.indexPathForSelectedRow
   
         nextViewController.celsius = cities[selectedPath!.row].celsius
-        nextViewController.Fahrenheit = cities[selectedPath!.row].celsius * 9/5 + 32
+        nextViewController.fahrenheit = cities[selectedPath!.row].celsius * 9/5 + 32
         nextViewController.navigationItem.title = cities[selectedPath!.row].city_name
         nextViewController.state = cities[selectedPath!.row].state
         nextViewController.rainfall = cities[selectedPath!.row].rainfall_probability
     }
-    ////
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
     }
-   // let img = UIImage(named: "flag_\(country.asset_name).jpg")
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cityCell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityCell {
             let city: City = self.cities[indexPath.row]
@@ -69,7 +70,6 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             return UITableViewCell()
         }
     }
-    //celsius == 섭씨
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -86,7 +86,6 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
        
-        
         do {
             self.cities = try jsonDecoder.decode([City].self, from: dataAsset.data)
         } catch {
@@ -101,7 +100,6 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
 class CityCell: UITableViewCell {
     @IBOutlet weak var weatherImg: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
-    
     @IBOutlet weak var FahrenheitLabel: UILabel!
     @IBOutlet weak var celsiusLabel: UILabel!
     @IBOutlet weak var rainfallLabel: UILabel!
