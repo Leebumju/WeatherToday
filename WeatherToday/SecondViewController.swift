@@ -33,6 +33,8 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         nextViewController.celsius = cities[selectedPath!.row].celsius
         nextViewController.Fahrenheit = cities[selectedPath!.row].celsius * 9/5 + 32
         nextViewController.navigationItem.title = cities[selectedPath!.row].city_name
+        nextViewController.state = cities[selectedPath!.row].state
+        nextViewController.rainfall = cities[selectedPath!.row].rainfall_probability
     }
     ////
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

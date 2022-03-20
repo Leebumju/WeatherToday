@@ -10,10 +10,20 @@ import UIKit
 class ThirdViewController: UIViewController {
     var Fahrenheit: Double?
     var celsius: Double?
-    //var weather
+    var state: Int?
+    var rainfall: Int?
+
+    
+    
+    @IBOutlet weak var weatherImg: UIImageView!
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var celsiusLabel: UILabel!
+    @IBOutlet weak var FahrenheitLabel: UILabel!
+    @IBOutlet weak var rainfallLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        settingLabel()
         // Do any additional setup after loading the view.
     }
     
@@ -27,5 +37,35 @@ class ThirdViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func settingLabel() {
+        var weatherName: String = ""
+        if let existCelsius = celsius {
+            celsiusLabel.text = String(existCelsius)
+        }
+        if let existFahrenheit = Fahrenheit {
+            FahrenheitLabel.text = String(existFahrenheit)
+        }
+        if let existRainfall = rainfall {
+            rainfallLabel.text = String(existRainfall) + "%"
+        }
+        
+        if state == 10 {
+            weatherLabel.text = "맑음"
+            weatherName = "sunny"
+        } else if state == 11 {
+            weatherLabel.text = "구름"
+            weatherName = "cloudy"
+        } else if state == 12 {
+            weatherLabel.text = "비"
+            weatherName = "rainy"
+        } else if state == 13 {
+            weatherLabel.text = "눈"
+            weatherName = "snowy"
+        }
+        
+        let img = UIImage(named: "\(weatherName).jpg")
+        weatherImg.image = img
+    }
 
 }
