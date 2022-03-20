@@ -26,15 +26,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
         
-        guard let cell: UITableViewCell = sender as? UITableViewCell else {
-            return
-        }
+        
         let selectedPath = countryView.indexPathForSelectedRow
         
         //두번째 뷰로 데이터 넘기기
         nextViewController.cityName = countries[selectedPath!.row].korean_name
         nextViewController.assetName = countries[selectedPath!.row].asset_name
-       
+        nextViewController.navigationItem.title = countries[selectedPath!.row].korean_name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

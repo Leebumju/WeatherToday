@@ -16,12 +16,25 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     ///
 
     @IBOutlet weak var cityView: UITableView!
-    @IBOutlet weak var cityLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    ///
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let nextViewController: ThirdViewController =
+                segue.destination as? ThirdViewController else {
+            return
+        }
+        
+        
+        let selectedPath = cityView.indexPathForSelectedRow
+  
+        nextViewController.celsius = cities[selectedPath!.row].celsius
+        nextViewController.Fahrenheit = cities[selectedPath!.row].celsius * 9/5 + 32
+        nextViewController.navigationItem.title = cities[selectedPath!.row].city_name
+    }
+    ////
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
     }
@@ -30,6 +43,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         if let cityCell = tableView.dequeueReusableCell(withIdentifier: "cityCell", for: indexPath) as? CityCell {
             let city: City = self.cities[indexPath.row]
             var weatherName: String = ""
+            
             cityCell.cityLabel?.text = city.city_name
             cityCell.FahrenheitLabel?.text = "화씨" + String((city.celsius * 9/5) + 32) + "도"
             cityCell.celsiusLabel?.text = "섭씨 " + String(city.celsius) + "도 / "
@@ -58,7 +72,7 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.cityLabel.text = self.cityName
+        
         var a: String = ""
         let jsonDecoder: JSONDecoder = JSONDecoder()
         
@@ -90,9 +104,3 @@ class CityCell: UITableViewCell {
     @IBOutlet weak var celsiusLabel: UILabel!
     @IBOutlet weak var rainfallLabel: UILabel!
 }
-/*
-/"city_name":"도쿄",
-"state":12,
-"celsius":2.3,
-"rainfall_probability":40
-*/

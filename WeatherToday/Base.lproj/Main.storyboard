@@ -3,13 +3,12 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--세계 날씨-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherToday" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,36 +54,16 @@
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="Zij-bP-1LX"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvF-rn-u9c">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="세계 날씨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWd-17-q60">
-                                        <rect key="frame" x="153.5" y="81" width="107" height="35"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <constraints>
-                                    <constraint firstItem="kWd-17-q60" firstAttribute="centerY" secondItem="cvF-rn-u9c" secondAttribute="centerY" constant="17.5" id="2Dk-tA-NGM"/>
-                                    <constraint firstItem="kWd-17-q60" firstAttribute="centerX" secondItem="cvF-rn-u9c" secondAttribute="centerX" id="UGQ-jg-q2k"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cvF-rn-u9c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8B4-NK-ZqS"/>
-                            <constraint firstItem="jie-BF-hCd" firstAttribute="top" secondItem="cvF-rn-u9c" secondAttribute="bottom" id="HUt-Xq-WpD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jie-BF-hCd" secondAttribute="trailing" id="Kib-aT-Ava"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jie-BF-hCd" secondAttribute="bottom" id="NF9-O1-x4J"/>
                             <constraint firstItem="jie-BF-hCd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aMc-A9-ffX"/>
-                            <constraint firstItem="cvF-rn-u9c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cuf-xj-IXe"/>
-                            <constraint firstItem="cvF-rn-u9c" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zVU-1W-d8m"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0gd-PV-hAJ"/>
+                    <navigationItem key="navigationItem" title="세계 날씨" id="0gd-PV-hAJ"/>
                     <connections>
                         <outlet property="countryView" destination="jie-BF-hCd" id="Bde-3U-g2c"/>
                     </connections>
@@ -152,6 +131,7 @@
                                             <outlet property="cityLabel" destination="JQ2-A3-B71" id="oOo-uX-6gd"/>
                                             <outlet property="rainfallLabel" destination="q0f-Bz-IUd" id="8Bl-ei-Bls"/>
                                             <outlet property="weatherImg" destination="j2f-xe-kaI" id="kMm-OE-zDM"/>
+                                            <segue destination="nHp-Zq-qHo" kind="show" identifier="showThirdView" id="w1C-fv-Ekd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -160,13 +140,6 @@
                                     <outlet property="delegate" destination="B9g-gL-V0y" id="U1k-AA-eGp"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F90-O1-aqO">
-                                <rect key="frame" x="186" y="101" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wVK-gt-zqk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -179,13 +152,28 @@
                     </view>
                     <navigationItem key="navigationItem" id="BoK-cE-dLv"/>
                     <connections>
-                        <outlet property="cityLabel" destination="F90-O1-aqO" id="9dx-6E-J66"/>
                         <outlet property="cityView" destination="P8T-t5-JSE" id="SbU-vM-x4h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AnW-9U-bJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1727.536231884058" y="83.705357142857139"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="TOt-zU-w6k">
+            <objects>
+                <viewController id="nHp-Zq-qHo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uKj-iZ-oln">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="B8P-t5-X8v"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gNN-fb-hJL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCl-YX-tVp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2620" y="89"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UV0-I5-yGu">
@@ -207,9 +195,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
